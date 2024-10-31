@@ -1,0 +1,9 @@
+services:  
+  runner:
+    restart: always
+    image: registry.gitlab.com/gitlab-org/gitlab-runner:alpine
+    container_name: gitlab-runner-docker
+    volumes:
+      - ./config:/etc/gitlab-runner:z
+      - ./data/runner/cache:/cache
+      #- /var/run/docker.sock:/var/run/docker.sock
