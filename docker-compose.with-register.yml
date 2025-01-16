@@ -1,0 +1,26 @@
+services:
+  runner:
+    container_name: runner
+    restart: always
+    image: registry.gitlab.com/gitlab-org/gitlab-runner:alpine
+    volumes:
+      - ./config:/etc/gitlab-runner:z
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  register-runner:
+    container_name: register-runner
+    restart: 'no'
+    image: registry.gitlab.com/gitlab-org/gitlab-runner:alpine
+    environment:
+      - CI_SERVER_URL=${CI_SERVER_URL}
+      - REGISTRATION_TOKEN=${REGISTRATION_TOKEN}
+    command:
+      - register
+      - --non-interactive
+      - --locked=false
+      - --name=${RUNNER_NAME}
+      - --executor=docker
+      - --docker-image=docker:stable
+      - --docker-volumes=/var/run/docker.sock:/var/run/docker.sock
+    volumes:
+      - ./config:/etc/gitlab-runner:z
