@@ -21,6 +21,6 @@
 ## Переменные для регистрации
 
 .env(.sh):
-* RUNNER_NAME(<Registration runner name>) = Произвольное имя, отображается в gitlab
-* REGISTRATION_TOKEN(<Registration token>) = Settings ->  CI / CD -> Runners -> Specific Runners -> Set up a specific Runner manually
-* CI_SERVER_URL(<Runner registration URL>) = Settings ->  CI / CD -> Runners -> Specific Runners -> Set up a specific Runner manually
+* RUNNER_NAME(\<Registration runner name\>) = Произвольное имя, отображается в gitlab
+* REGISTRATION_TOKEN(\<Registration token\>) = Settings ->  CI / CD -> Runners -> Specific Runners -> Set up a specific Runner manually
+* CI_SERVER_URL(\<Runner registration URL\>) = Settings ->  CI / CD -> Runners -> Specific Runners -> Set up a specific Runner manually
