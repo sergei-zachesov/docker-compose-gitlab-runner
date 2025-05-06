@@ -1,4 +1,4 @@
-# Запуск gitlab-runner в docker
+# Запуск GitLab Runner в Docker
 
 ## Следующие варианты:
 
