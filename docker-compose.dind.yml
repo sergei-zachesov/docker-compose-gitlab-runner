@@ -1,3 +1,5 @@
+name: gitlab-runner-dind
+
 services:
   dind:
     image: docker:20-dind
@@ -16,7 +18,7 @@ services:
     volumes:
       - ./config:/etc/gitlab-runner:z
       - ./data/runner/cache:/cache
-        ###- /var/run/docker.sock:/var/run/docker.sock
+      ###- /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DOCKER_HOST=tcp://dind:2375
 
