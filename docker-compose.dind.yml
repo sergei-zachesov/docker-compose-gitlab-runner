@@ -21,23 +21,3 @@ services:
       ###- /var/run/docker.sock:/var/run/docker.sock
     environment:
       - DOCKER_HOST=tcp://dind:2375
-
-  register-runner:
-    restart: 'no'
-    image: registry.gitlab.com/gitlab-org/gitlab-runner:alpine
-    depends_on:
-      - dind
-    environment:
-      - CI_SERVER_URL=${CI_SERVER_URL}
-      - REGISTRATION_TOKEN=${REGISTRATION_TOKEN}
-    command:
-      - register
-      - --non-interactive
-      - --locked=false
-      - --name=${RUNNER_NAME}
-      - --executor=docker
-      - --docker-image=docker:20-dind
-      - --docker-volumes=/var/run/docker.sock:/var/run/docker.sock
-    volumes:
-      - ./config:/etc/gitlab-runner:z
-      - ./data/dind/docker:/var/lib/docker
